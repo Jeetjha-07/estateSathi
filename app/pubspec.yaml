@@ -1,0 +1,56 @@
+name: estate_sathi
+description: EstateSathi - rent management app for property owners
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  http_parser: ^4.0.2
+  shared_preferences: ^2.2.2
+  image_picker: ^1.0.7
+  url_launcher: ^6.2.5
+  another_telephony: ^0.4.1
+  google_fonts: ^6.2.1
+  intl: ^0.19.0
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
+  pdf: ^3.10.8
+  printing: ^5.12.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.4
+
+dependency_overrides:
+  image: 4.10.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - web/estateSathi.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: web/estateSathi.png
+  remove_alpha_ios: true
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: web/estateSathi.png
+    background_color: "#003B35"
+    theme_color: "#003B35"
+  windows:
+    generate: true
+    image_path: web/estateSathi.png
+    icon_size: 48
+  macos:
+    generate: true
+    image_path: web/estateSathi.png
