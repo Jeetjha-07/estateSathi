@@ -1,6 +1,6 @@
 {
-    "name": "estate_sathi",
-    "short_name": "estate_sathi",
+    "name": "EstateSathi",
+    "short_name": "EstateSathi",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#003B35",

@@ -3,7 +3,7 @@
 Rent owners ke liye Flutter app + Node.js/MongoDB backend.
 
 ```
-estate_sathi/
+EstateSathi/
 ├── backend/   Node.js + Express + MongoDB Atlas (API)
 └── app/       Flutter app (lib/, pubspec.yaml)
 ```
@@ -32,7 +32,7 @@ estate_sathi/
 Flutter 3.24+ chahiye. `app/` folder ke andar:
 
 ```
-flutter create --org com.estatesathi --project-name estate_sathi .
+flutter create --org com.estatesathi --project-name EstateSathi .
 rm -f test/widget_test.dart
 python3 patch_manifest.py       # permissions + http + app naam set karta hai
 flutter pub get

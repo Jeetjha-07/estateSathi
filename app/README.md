@@ -1,4 +1,4 @@
-# estate_sathi
+# EstateSathi
 
 A new Flutter project.
 

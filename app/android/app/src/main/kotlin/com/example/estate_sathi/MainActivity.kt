@@ -1,4 +1,4 @@
-package com.example.estate_sathi
+package com.example.EstateSathi
 
 import io.flutter.embedding.android.FlutterActivity
 
