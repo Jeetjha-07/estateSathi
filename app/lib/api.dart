@@ -14,7 +14,7 @@ class ApiException implements Exception {
 
 class Api {
   // Local browser testing ke liye backend isi PC par chalayein.
-  static String baseUrl = 'http://localhost:5000';
+  static String baseUrl = ' https://estatesathi.onrender.com';
   static String? token;
   static String userName = 'Owner';
   static void Function()? onUnauthorized;
