@@ -52,53 +52,53 @@ String reminderText({
   required dynamic balance,
   required int dueDay,
 }) {
-  return 'Namaste $name ji,\n'
-      '$property - $room ka ${rupee(balance)} abhi baaki hai. '
-      'Rent har mahine ${ordinal(dueDay)} ko due hota hai. Kripya jaldi bhugtan karein.\n'
-      'Dhanyawaad - EstateSathi';
+  return 'नमस्ते $name जी,\n'
+      '$property - $room का ${rupee(balance)} अभी बकाया है। '
+      'किराया हर महीने $dueDay तारीख़ को देय होता है। कृपया शीघ्र भुगतान करें।\n'
+      'धन्यवाद - EstateSathi';
 }
 
 String billText(Map bill, Map detail, num balance) {
   final t = detail['tenant'];
   final b = bill;
-  return 'Namaste ${t['name']} ji,\n'
+  return 'नमस्ते ${t['name']} जी,\n'
       '${detail['property']?['name'] ?? ''} - ${detail['room']?['name'] ?? ''}\n'
-      'Bill (${fmtMonth(b['billDate'])})\n'
-      'Rent: ${rupee(b['rent'])}\n'
-      'Bijli: ${fmtNum(b['units'])} unit x ${rupee(b['rate'])} = ${rupee(b['electricity'])} '
-      '(reading ${fmtNum(b['prevReading'])} -> ${fmtNum(b['newReading'])})\n'
-      'Paani: ${rupee(b['water'])}\n'
-      'Kachra: ${rupee(b['garbage'])}\n'
-      'Is bill ka total: ${rupee(b['total'])}\n'
-      'Kul baaki (sab milakar): ${rupee(balance)}\n'
-      'Kripya samay par bhugtan karein. - EstateSathi';
+      'बिल (${fmtMonth(b['billDate'])})\n'
+      'किराया: ${rupee(b['rent'])}\n'
+      'बिजली: ${fmtNum(b['units'])} यूनिट × ${rupee(b['rate'])} = ${rupee(b['electricity'])} '
+      '(मीटर रीडिंग ${fmtNum(b['prevReading'])} से ${fmtNum(b['newReading'])} तक)\n'
+      'पानी: ${rupee(b['water'])}\n'
+      'कचरा शुल्क: ${rupee(b['garbage'])}\n'
+      'इस बिल का कुल योग: ${rupee(b['total'])}\n'
+      'कुल बकाया (सभी मिलाकर): ${rupee(balance)}\n'
+      'कृपया समय पर भुगतान करें। - EstateSathi';
 }
 
 Future<void> sendWhatsApp(BuildContext c, String phone, String text) async {
   final uri = Uri.parse('https://wa.me/${waNumber(phone)}?text=${Uri.encodeComponent(text)}');
   try {
     final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
-    if (!ok && c.mounted) toast(c, 'WhatsApp nahi khul paya', error: true);
+    if (!ok && c.mounted) toast(c, 'WhatsApp नहीं खुल सका', error: true);
   } catch (_) {
-    if (c.mounted) toast(c, 'WhatsApp nahi khul paya', error: true);
+    if (c.mounted) toast(c, 'WhatsApp नहीं खुल सका', error: true);
   }
 }
 
-/// Permission lekar seedha SMS bhejta hai. Permission na mile to SMS app khol deta hai.
+/// अनुमति लेकर सीधे SMS भेजता है। अनुमति न मिले तो SMS ऐप खोलता है।
 Future<void> sendSms(BuildContext c, String phone, String text) async {
   final number = phone.replaceAll(RegExp(r'[^\d+]'), '');
   try {
     final granted = await Telephony.instance.requestPhoneAndSmsPermissions;
     if (granted == true) {
       await Telephony.instance.sendSms(to: number, message: text);
-      if (c.mounted) toast(c, 'SMS bhej diya gaya');
+      if (c.mounted) toast(c, 'SMS भेज दिया गया');
       return;
     }
   } catch (_) {}
   try {
     await launchUrl(Uri.parse('sms:$number?body=${Uri.encodeComponent(text)}'), mode: LaunchMode.externalApplication);
   } catch (_) {
-    if (c.mounted) toast(c, 'SMS nahi bheja ja saka', error: true);
+    if (c.mounted) toast(c, 'SMS नहीं भेजा जा सका', error: true);
   }
 }
 
